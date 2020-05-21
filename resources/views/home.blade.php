@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 @section('content')
     <div class="content">
-        <div class="row">
+        <div class="panel panel-body">
+        <div class="row panel-body panel-shadow">
             @foreach ($number_blocks as $block)
-            <div class="col-md-4 ">
+            <div class="col-md-6">
                 <div class="info-box">
-                        <span class="info-box-icon bg-red"
+                        <span class="info-box-icon bg-info"
                               style="display:flex; flex-direction: column; justify-content: center;">
-                            <i class="fa fa-chart-line"></i>
+                            <i class="fa  fa-chart-line" style="color:white"></i>
                         </span>
 
                     <div class="info-box-content">
@@ -19,11 +20,11 @@
             @endforeach
         </div>
 
-        <div class="row">
+        <div class="row panel-shadow panel-body">
             @foreach ($list_blocks as $block)
-                <div class="col-md-6">
-                    <h3>{{ $block['title'] }}</h3>
-                    <table class="table table-bordered table-striped">
+                <div class="col-md-12 mx-auto card-body">
+                    <h4 class="text-center">{{ $block['title'] }}</h3>
+                    <table class="table table-responsive table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -45,17 +46,20 @@
                         @endforelse
                         </tbody>
                     </table>
+                    <hr style="height:20px black">
                 </div>
+
             @endforeach
         </div>
 
-        <div class="row">
+        <div class="row panel-shadow">
             <div class="{{ $chart->options['column_class'] }}">
-                <h3>{!! $chart->options['chart_title'] !!}</h3>
+                <h3 style="text-align: center">{!! $chart->options['chart_title'] !!}</h3>
                 {!! $chart->renderHtml() !!}
             </div>
         </div>
     </div>
+</div>
 @endsection
 @section('scripts')
     @parent
